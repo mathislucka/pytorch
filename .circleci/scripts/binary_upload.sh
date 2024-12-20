@@ -80,7 +80,7 @@ s3_upload() {
       (
         set -x
         ${AWS_S3_CP} --no-progress --acl public-read "${pkg}" "${s3_upload_dir}"
-        if [[ pkg_type == "whl" ]]; then
+        if [[ ${pkg_type} == "whl" ]]; then
           python scripts/release/upload_metadata_file.py \
             --package "${pkg}" \
             --bucket "${UPLOAD_BUCKET}" \
